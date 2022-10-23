@@ -8,4 +8,4 @@ tscinit: tsig
 	tsc --init
 
 clear:
-	rm lesson_typescript/*/*.js
+	rm lesson_ts/*/*.js
