@@ -26,16 +26,20 @@ enum QuestionStatus {
   Deleted="deleted"
 }
 
-async function getFaqs(req: {
+type request = {
   topicId: number,
   status: QuestionStatus
-}): Promise<{
+}
+
+type response = {
   question: string;
   answer: string;
   tags: string[];
   likes: number;
   status: QuestionStatus;
-}[]> {
+}
+
+async function getFaqs(req: request): Promise<[response]> {
 	const res = await fetch('/faqs', {
 		method: 'POST',
 		body: JSON.stringify(req)
