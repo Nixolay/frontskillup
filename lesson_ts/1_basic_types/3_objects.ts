@@ -1,6 +1,6 @@
-function getFullName(user: {firstname:string, surname:string}):string{
-  return `${user.firstname} ${user.surname}`
-};
+function getFullName(user: { firstname: string; surname: string }): string {
+  return `${user.firstname} ${user.surname}`;
+}
 
 const user = {
   firstname: "Name",

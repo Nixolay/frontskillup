@@ -7,15 +7,15 @@ input = 1;
 input = ["hello", "world"];
 
 // Но его можно присвоить только к типу any.
-let res1: string = input // нельзя
-let res2: any = input    // можно
+let res1: string = input; // нельзя
+let res2: any = input; // можно
 
 // Правильное использование
 async function getData() {
-  try{
-    await fetch('error')
+  try {
+    await fetch("error");
   } catch (error) {
-    if (error instanceof Error){
+    if (error instanceof Error) {
       console.log(error.message);
     }
   }
@@ -24,7 +24,7 @@ async function getData() {
 // Не правильное использование
 async function getDataForce() {
   try {
-    await fetch('error');
+    await fetch("error");
   } catch (error) {
     const e = error as Error;
     console.log(e.message);

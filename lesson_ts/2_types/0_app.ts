@@ -1,15 +1,15 @@
-interface IPayment{
+interface IPayment {
   sum: number;
   from: number;
   ro: number;
 }
 
 enum PaymentStatus {
-  Success="success",
-  Failed="failed",
+  Success = "success",
+  Failed = "failed",
 }
 
-interface IPaymentRequest extends IPayment{}
+interface IPaymentRequest extends IPayment {}
 
 interface IDataSuccess extends IPayment {
   databaseId: number;
@@ -28,4 +28,21 @@ interface IResponseSuccess {
 interface IResponseFailed {
   status: PaymentStatus.Failed;
   data: IDataFailed;
+}
+
+type Response = IResponseSuccess | IResponseFailed;
+
+function isSuccess(res: Response): res is IResponseSuccess {
+  if (res.status === PaymentStatus.Success) {
+    return true;
+  }
+  return false;
+}
+
+function getIDFromData(res: Response): number {
+  if (isSuccess(res)) {
+    return res.data.databaseId;
+  } else {
+    throw new Error(res.data.errorMessage);
+  }
 }
